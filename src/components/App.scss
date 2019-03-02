@@ -1,5 +1,10 @@
-.app{
-  .nav-link{
-    cursor: pointer;
-  }
+.nav-link{
+  cursor: pointer;
 }
+
+.wrapper{
+  width: 100%;
+  padding: 0 15px;
+}
+
+@import "Sidebar/sidebar";
