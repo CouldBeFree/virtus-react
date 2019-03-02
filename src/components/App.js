@@ -9,43 +9,54 @@ import Chat from '../components/Chat/Chat';
 import Sidebar from './Sidebar/Sidebar';
 import { Row, Col } from 'reactstrap';
 import createBrowserHistory from 'history/createBrowserHistory';
-import store from '../store';
-import { Provider } from 'react-redux';
+import PrivateRoute from '../components/PrivateRoute';
+import { connect } from 'react-redux';
 import './App.scss';
 
 const customHistory = createBrowserHistory();
 
 class App extends Component {
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+    }
+
     render() {
         return (
-            <Provider store={store}>
-                <Router history={customHistory}>
-                    <div>
-                        <div className="top-bar">
-
-                        </div>
-                        <div className="wrapper">
+            <Router history={customHistory}>
+                <div>
+                    <div className="top-bar">
+                        {console.log()}
+                    </div>
+                    <div className="wrapper">
+                        {this.props.auth ? (
                             <Row>
-                                <Col xs="3">
+                                <Col xs="2">
                                     <Sidebar/>
                                 </Col>
-                                <Col xs="9">
+                                <Col xs="10">
                                     <Switch>
-                                        <Route exact path="/" component={Home}/>
-                                        <Route exact path="/auth" component={Auth}/>
-                                        <Route exact path="/projects" component={Projects}/>
-                                        <Route exact path="/statistics" component={Statistics}/>
-                                        <Route exact path="/trello" component={Trello}/>
-                                        <Route exact path="/chat" component={Chat}/>
+                                        <PrivateRoute exact path="/" component={Home}/>
+                                        <PrivateRoute exact path="/projects" component={Projects}/>
+                                        <PrivateRoute exact path="/statistics" component={Statistics}/>
+                                        <PrivateRoute exact path="/trello" component={Trello}/>
+                                        <PrivateRoute exact path="/chat" component={Chat}/>
                                     </Switch>
                                 </Col>
                             </Row>
-                        </div>
+                        ) : <Route exact path="/auth" component={Auth}/>}
                     </div>
-                </Router>
-            </Provider>
+                </div>
+            </Router>
         );
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return{
+        auth: state.auth.isAuthenticated
+    }
+};
+
+// export default App;
+export default connect(mapStateToProps)(App);

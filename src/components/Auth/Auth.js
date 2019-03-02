@@ -59,7 +59,7 @@ class Auth extends Component {
             <Container>
                 <Row>
                     <Col xs="3"></Col>
-                    <Col xs="auto">
+                    <Col xs="6">
                         <Nav tabs>
                             <NavItem>
                                 <NavLink
