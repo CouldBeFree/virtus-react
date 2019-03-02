@@ -4,6 +4,8 @@ import Register from './Register';
 import Login from './Login';
 import classnames from 'classnames';
 import firebase from "../../firebase";
+import loginUser from '../../actions/loginUser';
+import { connect } from 'react-redux';
 
 class Auth extends Component {
 
@@ -31,10 +33,12 @@ class Auth extends Component {
         event.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(resp => {
-                console.log(resp)
+                console.log(resp);
+                this.props.loginUser(true)
             })
             .catch(err => {
-                console.log(err.message)
+                console.log(err.message);
+                this.props.loginUser(false)
             })
     };
 
@@ -90,4 +94,8 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+const mapStateToProps = state => {
+    return{}
+};
+
+export default connect(mapStateToProps, {loginUser})(Auth);

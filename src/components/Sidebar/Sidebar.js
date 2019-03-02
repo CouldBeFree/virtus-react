@@ -16,6 +16,9 @@ const Sidebar = () => (
             <li className="sidebar-item">
                 <NavLink to="/trello">Trello</NavLink>
             </li>
+            <li className="sidebar-item">
+                <NavLink to="/chat">Chat</NavLink>
+            </li>
         </ul>
     </div>
 );
