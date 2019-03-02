@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import fireabase from '../../firebase';
+import firebase from '../../firebase';
 
 class Login extends Component {
     state = {
@@ -7,12 +7,28 @@ class Login extends Component {
         password: ''
     };
 
+    handleSubmit = event => {
+        const { email, password } = this.state;
+        event.preventDefault();
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(resp => {
+                console.log(resp)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    };
+
+    handleChange = event => {
+        this.setState({ [event.target.name] : event.target.value })
+    };
+
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="email"/>
-                    <input type="password"/>
+                    <input name="email" type="email" onChange={this.handleChange}/>
+                    <input name="password" type="password" onChange={this.handleChange}/>
                     <input type="submit" value="submit"/>
                 </form>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Register from '../components/Auth/Register';
+import Login from '../components/Auth/Login';
 import './App.scss';
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
             <div className="App">
                 <h1>I am root component</h1>
                 <Register/>
+                <Login/>
             </div>
         );
     }
