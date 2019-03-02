@@ -1,12 +1,17 @@
 import React from 'react';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 const Register = ({submit, getValue}) => (
     <div>
-        <form onSubmit={submit}>
-            <input name="email" placeholder="email" onChange={getValue} type="email"/>
-            <input name="password" placeholder="password" onChange={getValue} type="password"/>
-            <input type="submit" value="submit"/>
-        </form>
+        <Form onSubmit={submit}>
+            <FormGroup>
+                <Input type="email" name="email" placeholder="Email" onChange={getValue} />
+            </FormGroup>
+            <FormGroup>
+                <Input type="password" name="password" placeholder="Password" onChange={getValue} />
+            </FormGroup>
+            <Button>Submit</Button>
+        </Form>
     </div>
 );
 

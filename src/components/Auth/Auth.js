@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap';
 import Register from './Register';
 import Login from './Login';
 import classnames from 'classnames';
@@ -52,34 +52,40 @@ class Auth extends Component {
 
     render() {
         return (
-            <div>
-                <Nav tabs>
-                    <NavItem>
-                        <NavLink
-                            className={classnames({ active: this.state.activeTab === '1' })}
-                            onClick={() => { this.toggle('1'); }}
-                        >
-                            Register
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink
-                            className={classnames({ active: this.state.activeTab === '2' })}
-                            onClick={() => { this.toggle('2'); }}
-                        >
-                            Login
-                        </NavLink>
-                    </NavItem>
-                </Nav>
-                <TabContent activeTab={this.state.activeTab}>
-                    <TabPane tabId="1">
-                        <Register submit={this.handleRegister} getValue={this.handleChange}/>
-                    </TabPane>
-                    <TabPane tabId="2">
-                        <Login submit={this.handleLogin} getValue={this.handleChange}/>
-                    </TabPane>
-                </TabContent>
-            </div>
+            <Container>
+                <Row>
+                    <Col xs="3"></Col>
+                    <Col xs="auto">
+                        <Nav tabs>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '1' })}
+                                    onClick={() => { this.toggle('1'); }}
+                                >
+                                    Register
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '2' })}
+                                    onClick={() => { this.toggle('2'); }}
+                                >
+                                    Login
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
+                        <TabContent activeTab={this.state.activeTab}>
+                            <TabPane tabId="1">
+                                <Register submit={this.handleRegister} getValue={this.handleChange}/>
+                            </TabPane>
+                            <TabPane tabId="2">
+                                <Login submit={this.handleLogin} getValue={this.handleChange}/>
+                            </TabPane>
+                        </TabContent>
+                    </Col>
+                    <Col xs="3"></Col>
+                </Row>
+            </Container>
         );
     }
 }
