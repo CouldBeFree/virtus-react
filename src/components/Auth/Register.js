@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
 
 const Register = ({submit, getValue}) => (
     <div>
@@ -10,7 +10,7 @@ const Register = ({submit, getValue}) => (
             <FormGroup>
                 <Input type="password" name="password" placeholder="Password" onChange={getValue} />
             </FormGroup>
-            <Button>Submit</Button>
+            <input type="submit" className="button" value="Enter"/>
         </Form>
     </div>
 );

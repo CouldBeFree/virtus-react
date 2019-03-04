@@ -30,7 +30,7 @@ class App extends Component {
     render() {
         return (
             <Router history={customHistory}>
-                <div>
+                <div className="wrap">
                     { this.props.auth ? (
                         <div>
                             <div className="top-bar">

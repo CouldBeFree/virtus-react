@@ -1,3 +1,11 @@
+.wrap{
+  height: 100vh;
+  background: url('../static/background.jpg') 50% 50% no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .nav-link{
   cursor: pointer;
 }
@@ -13,3 +21,4 @@
 }
 
 @import "Sidebar/sidebar";
+@import "./Auth/Auth";

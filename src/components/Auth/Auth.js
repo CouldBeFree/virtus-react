@@ -60,32 +60,35 @@ class Auth extends Component {
                 <Row>
                     <Col xs="3"></Col>
                     <Col xs="6">
-                        <Nav tabs>
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: this.state.activeTab === '1' })}
-                                    onClick={() => { this.toggle('1'); }}
-                                >
-                                    Register
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: this.state.activeTab === '2' })}
-                                    onClick={() => { this.toggle('2'); }}
-                                >
-                                    Login
-                                </NavLink>
-                            </NavItem>
-                        </Nav>
-                        <TabContent activeTab={this.state.activeTab}>
-                            <TabPane tabId="1">
-                                <Register submit={this.handleRegister} getValue={this.handleChange}/>
-                            </TabPane>
-                            <TabPane tabId="2">
-                                <Login submit={this.handleLogin} getValue={this.handleChange}/>
-                            </TabPane>
-                        </TabContent>
+                        <div className="center">
+                            <Nav tabs className="nav-item">
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === '1' })}
+                                        onClick={() => { this.toggle('1'); }}
+                                    >
+                                        Register
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === '2' })}
+                                        onClick={() => { this.toggle('2'); }}
+                                    >
+                                        Login
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
+                            <h1 className="auth-headline">Welcome back</h1>
+                            <TabContent activeTab={this.state.activeTab}>
+                                <TabPane tabId="1">
+                                    <Register submit={this.handleRegister} getValue={this.handleChange}/>
+                                </TabPane>
+                                <TabPane tabId="2">
+                                    <Login submit={this.handleLogin} getValue={this.handleChange}/>
+                                </TabPane>
+                            </TabContent>
+                        </div>
                     </Col>
                     <Col xs="3"></Col>
                 </Row>
