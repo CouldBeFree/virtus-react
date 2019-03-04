@@ -12,13 +12,18 @@ class Auth extends Component {
     state = {
         activeTab: '1',
         email: '',
-        password: ''
+        password: '',
+        disabled: true
+    };
+
+    validateEmail = email => {
+        let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return reg.test(String(email).toLowerCase());
     };
 
     handleRegister = event => {
         const {email, password} = this.state;
         event.preventDefault();
-
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(user => {
                 console.log(user)
@@ -43,7 +48,7 @@ class Auth extends Component {
     };
 
     handleChange = event => {
-        this.setState({ [event.target.name] : event.target.value })
+        this.setState({ [event.target.name] : event.target.value });
     };
 
     toggle(tab) {
@@ -55,6 +60,8 @@ class Auth extends Component {
     }
 
     render() {
+        const { disabled } = this.state;
+
         return (
             <Container>
                 <Row>
@@ -82,10 +89,18 @@ class Auth extends Component {
                             <h1 className="auth-headline">Welcome back</h1>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="1">
-                                    <Register submit={this.handleRegister} getValue={this.handleChange}/>
+                                    <Register
+                                        submit={this.handleRegister}
+                                        getValue={this.handleChange}
+                                        disabled={disabled}
+                                    />
                                 </TabPane>
                                 <TabPane tabId="2">
-                                    <Login submit={this.handleLogin} getValue={this.handleChange}/>
+                                    <Login
+                                        submit={this.handleLogin}
+                                        getValue={this.handleChange}
+                                        disabled={disabled}
+                                    />
                                 </TabPane>
                             </TabContent>
                         </div>
