@@ -18,6 +18,15 @@ const customHistory = createBrowserHistory();
 
 class App extends Component {
 
+    componentDidMount () {
+        customHistory.push('/auth');
+    }
+
+    logoutUser = () => {
+        this.props.loginUser(false);
+        customHistory.push('/auth');
+    };
+
     render() {
         return (
             <Router history={customHistory}>
@@ -25,7 +34,7 @@ class App extends Component {
                     { this.props.auth ? (
                         <div>
                             <div className="top-bar">
-                                <button onClick={() => this.props.loginUser(false)}>Logout</button>
+                                <button onClick={this.logoutUser}>Logout</button>
                             </div>
                             <div className="wrapper">
                                 <Row>
@@ -42,14 +51,10 @@ class App extends Component {
                                         </Switch>
                                     </Col>
                                 </Row>
-
                             </div>
                         </div>
                     ) : <Route exact path="/auth" component={Auth}/>
                     }
-
-                    {/*<button onClick={() => this.props.loginUser(false)}>Logout</button>*/}
-                    {/*{console.log(this.props.auth)}*/}
                 </div>
             </Router>
         );

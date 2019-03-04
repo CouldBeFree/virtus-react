@@ -34,7 +34,7 @@ class Auth extends Component {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(resp => {
                 console.log(resp);
-                this.props.loginUser(true)
+                this.props.loginUser(true);
             })
             .catch(err => {
                 console.log(err.message);
