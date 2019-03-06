@@ -13,7 +13,10 @@ class Auth extends Component {
         activeTab: '1',
         email: '',
         password: '',
-        disabled: true
+        disabled: true,
+        validMail: false,
+        errors: [],
+        success: null
     };
 
     validateEmail = email => {
@@ -22,15 +25,43 @@ class Auth extends Component {
     };
 
     handleRegister = event => {
-        const {email, password} = this.state;
+        const {email, password, errors, success} = this.state;
         event.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(user => {
-                console.log(user)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
+        if(this.isFormEmpty(this.state)) {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(user => {
+                    let message = 'Registration successful';
+                    this.setState({
+                        success: message
+                    });
+                    console.log(user)
+                })
+                .catch(err => {
+                    this.setState({
+                        errors: errors.concat(err.message)
+                    });
+                    console.log(err.message)
+                })
+        } else {
+            return false
+        }
+    };
+
+    isFormEmpty = ({password}) => {
+        let errors = [];
+        if(password.length > 4) {
+            this.setState({
+                errors: []
+            });
+            return true
+        } else {
+            let error = 'Password must contain at least 4 characters';
+            this.setState({
+                errors: errors.concat(error)
+            });
+            return false
+        }
     };
 
     handleLogin = event => {
@@ -48,7 +79,12 @@ class Auth extends Component {
     };
 
     handleChange = event => {
-        this.setState({ [event.target.name] : event.target.value });
+        const {email, password} = this.state;
+        const validMail = this.validateEmail(email);
+        console.log(validMail);
+        this.setState({
+            [event.target.name] : event.target.value
+        });
     };
 
     toggle(tab) {
@@ -92,7 +128,8 @@ class Auth extends Component {
                                     <Register
                                         submit={this.handleRegister}
                                         getValue={this.handleChange}
-                                        disabled={disabled}
+                                        errors={this.state.errors}
+                                        success={this.state.success}
                                     />
                                 </TabPane>
                                 <TabPane tabId="2">
