@@ -6,6 +6,9 @@ import classnames from 'classnames';
 import firebase from "../../firebase";
 import loginUser from '../../actions/loginUser';
 import { connect } from 'react-redux';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 class Auth extends Component {
 
@@ -71,6 +74,7 @@ class Auth extends Component {
             .then(resp => {
                 console.log(resp);
                 this.props.loginUser(true);
+                history.push('/');
             })
             .catch(err => {
                 console.log(err.message);

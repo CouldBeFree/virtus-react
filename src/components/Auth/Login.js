@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
 
-const Login = ({submit, getValue, disabled}) => (
+const Login = ({submit, getValue}) => (
     <div>
         <Form onSubmit={submit}>
             <FormGroup>
