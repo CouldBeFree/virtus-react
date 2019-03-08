@@ -2,10 +2,21 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  i{
+    font-size: 35px;
+  }
   
   &-item{
+    text-align: center;
+    margin: 35px 0;
+
+    a{
+      color: #757da4;
+    }
+
     .active{
-      color: #000;
+      color: #ffffff;
     }
   }
 }

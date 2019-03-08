@@ -5,6 +5,12 @@
 
 form{
   text-align: center;
+
+  input{
+    &:focus{
+      box-shadow: none;
+    }
+  }
 }
 
 .button{

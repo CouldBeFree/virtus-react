@@ -6,6 +6,19 @@
   align-items: center;
 }
 
+.sidebar-wrap{
+  background: #2d3040;
+  height: 100vh;
+}
+
+.main{
+  background: #2a2c3b;
+
+  h1{
+    color: #ffffff;
+  }
+}
+
 .nav-link{
   cursor: pointer;
 }
