@@ -70,16 +70,18 @@ class Auth extends Component {
     handleLogin = event => {
         const { email, password } = this.state;
         event.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(resp => {
-                console.log(resp);
-                this.props.loginUser(true);
-                history.push('/');
-            })
-            .catch(err => {
-                console.log(err.message);
-                this.props.loginUser(false)
-            })
+        if(this.isFormEmpty(this.state)) {
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(resp => {
+                    console.log(resp);
+                    this.props.loginUser(true);
+                    history.push('/');
+                })
+                .catch(err => {
+                    console.log(err.message);
+                    this.props.loginUser(false)
+                })
+        }
     };
 
     handleChange = event => {
@@ -142,6 +144,8 @@ class Auth extends Component {
                                             submit={this.handleLogin}
                                             getValue={this.handleChange}
                                             disabled={disabled}
+                                            errors={this.state.errors}
+                                            success={this.state.success}
                                         />
                                     </TabPane>
                                 </TabContent>
