@@ -28,10 +28,11 @@ class App extends Component {
     };
 
     render() {
+        const { auth } = this.props;
         return (
             <Router history={customHistory}>
-                <div className="wrap">
-                    { this.props.auth ? (
+                { auth ? (
+                    <div className="wrap">
                         <div>
                             <div className="top-bar">
                                 <button onClick={this.logoutUser}>Logout</button>
@@ -53,9 +54,8 @@ class App extends Component {
                                 </Row>
                             </div>
                         </div>
-                    ) : <Route exact path="/auth" component={Auth}/>
-                    }
-                </div>
+                    </div>
+                ) :  <Route exact path="/auth" component={Auth}/>}
             </Router>
         );
     }

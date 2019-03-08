@@ -28,7 +28,7 @@ class Auth extends Component {
     };
 
     handleRegister = event => {
-        const {email, password, errors, success} = this.state;
+        const {email, password, errors} = this.state;
         event.preventDefault();
 
         if(this.isFormEmpty(this.state)) {
@@ -83,7 +83,7 @@ class Auth extends Component {
     };
 
     handleChange = event => {
-        const {email, password} = this.state;
+        const {email} = this.state;
         const validMail = this.validateEmail(email);
         console.log(validMail);
         this.setState({
@@ -103,52 +103,54 @@ class Auth extends Component {
         const { disabled } = this.state;
 
         return (
-            <Container>
-                <Row>
-                    <Col xs="3"></Col>
-                    <Col xs="6">
-                        <div className="center">
-                            <Nav tabs className="nav-item">
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: this.state.activeTab === '1' })}
-                                        onClick={() => { this.toggle('1'); }}
-                                    >
-                                        Register
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: this.state.activeTab === '2' })}
-                                        onClick={() => { this.toggle('2'); }}
-                                    >
-                                        Login
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                            <h1 className="auth-headline">Welcome back</h1>
-                            <TabContent activeTab={this.state.activeTab}>
-                                <TabPane tabId="1">
-                                    <Register
-                                        submit={this.handleRegister}
-                                        getValue={this.handleChange}
-                                        errors={this.state.errors}
-                                        success={this.state.success}
-                                    />
-                                </TabPane>
-                                <TabPane tabId="2">
-                                    <Login
-                                        submit={this.handleLogin}
-                                        getValue={this.handleChange}
-                                        disabled={disabled}
-                                    />
-                                </TabPane>
-                            </TabContent>
-                        </div>
-                    </Col>
-                    <Col xs="3"></Col>
-                </Row>
-            </Container>
+            <div className="authentication-wrap">
+                <Container>
+                    <Row>
+                        <Col xs="3"></Col>
+                        <Col xs="6">
+                            <div className="center">
+                                <Nav tabs className="nav-item">
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '1' })}
+                                            onClick={() => { this.toggle('1'); }}
+                                        >
+                                            Register
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '2' })}
+                                            onClick={() => { this.toggle('2'); }}
+                                        >
+                                            Login
+                                        </NavLink>
+                                    </NavItem>
+                                </Nav>
+                                <h1 className="auth-headline">Welcome back</h1>
+                                <TabContent activeTab={this.state.activeTab}>
+                                    <TabPane tabId="1">
+                                        <Register
+                                            submit={this.handleRegister}
+                                            getValue={this.handleChange}
+                                            errors={this.state.errors}
+                                            success={this.state.success}
+                                        />
+                                    </TabPane>
+                                    <TabPane tabId="2">
+                                        <Login
+                                            submit={this.handleLogin}
+                                            getValue={this.handleChange}
+                                            disabled={disabled}
+                                        />
+                                    </TabPane>
+                                </TabContent>
+                            </div>
+                        </Col>
+                        <Col xs="3"></Col>
+                    </Row>
+                </Container>
+            </div>
         );
     }
 }
