@@ -29,4 +29,41 @@
       }
     }
   }
+
+  .inbox{
+    height: 100%;
+    overflow: hidden;
+
+    &__top{
+      color: #ffffff;
+      font-size: 25px;
+      margin: 0;
+      background: #3a3e52;
+      padding: 10px 0;
+
+      p{
+        margin: 0;
+      }
+    }
+
+    .box{
+      p{
+        margin: 0;
+      }
+
+      .name{
+        color: #ffffff;
+        font-size: 16px;
+      }
+
+      .time{
+        font-size: 14px;
+        color: #2291ea;
+      }
+
+      .content{
+        color: #9ca1b2;
+      }
+    }
+  }
 }
