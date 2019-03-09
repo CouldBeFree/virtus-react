@@ -8,6 +8,16 @@
     max-height: 300px;
     padding-top: 35px;
     position: relative;
+    background: #2f3242;
+
+    .select{
+      border-radius: 20px;
+      width: 160px;
+
+      p{
+        color: #9297a8;
+      }
+    }
 
     &__top{
       position: absolute;
@@ -65,5 +75,9 @@
         color: #9ca1b2;
       }
     }
+  }
+
+  .react-calendar{
+    background: #2f3242;
   }
 }

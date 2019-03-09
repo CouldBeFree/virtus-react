@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {BarChart, Bar, XAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
 import { Row, Col } from 'reactstrap';
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+import BarGraph from './BarGraph';
 
 class Home extends Component {
     state = {
@@ -162,35 +164,27 @@ class Home extends Component {
     };
 
     render () {
-        const {inbox} = this.state;
+        const {inbox, select, data} = this.state;
+        const modifiersStyles = {
+            birthday: {
+                color: 'white',
+                backgroundColor: '#ffc107',
+            },
+            thursdays: {
+                color: '#ffc107',
+                backgroundColor: '#fffdee',
+            },
+        };
+
         return (
             <div className="home-wrapper">
                 <Row>
                     <Col xs="6">
-                        <div className="sales-report">
-                            <div className="sales-report__top d-flex justify-content-between">
-                                <h3>Sales report</h3>
-                                <div className="select d-flex justify-content-between">
-                                    <p>Show</p>
-                                    <select value={this.state.select} onChange={this.handleChange}>
-                                        <option value="year">Year</option>
-                                        <option value="month">Month</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <ResponsiveContainer>
-                                <BarChart
-                                    data={this.state.data}
-                                    margin={{
-                                        top: 5, right: 30, left: 20, bottom: 5,
-                                    }}
-                                >
-                                    <XAxis dataKey="name" />
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <Bar dataKey="uv" fill="#505464" />
-                                </BarChart>
-                            </ResponsiveContainer>
-                        </div>
+                        <BarGraph
+                            handleChange={this.handleChange}
+                            select={select}
+                            data={data}
+                        />
                     </Col>
                     <Col xs="3">
                         <div className="inbox">
@@ -213,7 +207,12 @@ class Home extends Component {
                         </div>
                     </Col>
                     <Col xs="3">
-
+                        <div>
+                            <DayPicker
+                                month={new Date()}
+                                modifiersStyles={modifiersStyles}
+                            />
+                        </div>
                     </Col>
                 </Row>
             </div>
