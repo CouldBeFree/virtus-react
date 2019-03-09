@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {BarChart, Bar, XAxis, CartesianGrid} from 'recharts';
-import { Container, Row, Col } from 'reactstrap';
+import {BarChart, Bar, XAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
+import { Row, Col } from 'reactstrap';
 
 class Home extends Component {
     state = {
@@ -43,35 +43,39 @@ class Home extends Component {
             }
         ]
     };
+
     render () {
         return (
             <div className="home-wrapper">
-                <div className="home-wrapper__top d-flex justify-content-between">
-                    <h3>Sales report</h3>
-                    <div className="select">
-                        <p>Show</p>
-                        <select>
-                            <option value="year">Year</option>
-                            <option value="lime">Lime</option>
-                            <option selected value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="sales-report">
-                    <BarChart
-                        width={400}
-                        height={200}
-                        data={this.state.data}
-                        margin={{
-                            top: 5, right: 30, left: 20, bottom: 5,
-                        }}
-                    >
-                        <XAxis dataKey="name" />
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <Bar dataKey="uv" fill="#505464" />
-                    </BarChart>
-                </div>
+                {console.log(this.select)}
+                <Row>
+                    <Col xs="6">
+                        <div className="sales-report">
+                            <div className="sales-report__top d-flex justify-content-between">
+                                <h3>Sales report</h3>
+                                <div className="select d-flex justify-content-between">
+                                    <p>Show</p>
+                                    <select>
+                                        <option value="year">Year</option>
+                                        <option value="month">Month</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <ResponsiveContainer>
+                                <BarChart
+                                    data={this.state.data}
+                                    margin={{
+                                        top: 5, right: 30, left: 20, bottom: 5,
+                                    }}
+                                >
+                                    <XAxis dataKey="name" />
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <Bar dataKey="uv" fill="#505464" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         )
     }
