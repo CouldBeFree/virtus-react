@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
 import BarGraph from './BarGraph';
+import Inbox from './Inbox';
+import Calendar from './Calendar';
 
 class Home extends Component {
     state = {
@@ -165,16 +165,6 @@ class Home extends Component {
 
     render () {
         const {inbox, select, data} = this.state;
-        const modifiersStyles = {
-            birthday: {
-                color: 'white',
-                backgroundColor: '#ffc107',
-            },
-            thursdays: {
-                color: '#ffc107',
-                backgroundColor: '#fffdee',
-            },
-        };
 
         return (
             <div className="home-wrapper">
@@ -187,32 +177,10 @@ class Home extends Component {
                         />
                     </Col>
                     <Col xs="3">
-                        <div className="inbox">
-                            <div className="inbox__top text-center">
-                                <p>Inbox</p>
-                            </div>
-                            { inbox.map((item) => {
-                                return (
-                                    <div className="box" key={item.id}>
-                                        <div className="box__top d-flex justify-content-between">
-                                            <p className="name">{item.name}</p>
-                                            <p className="time">{item.time}</p>
-                                        </div>
-                                        <div className="content">
-                                            <p>{item.content}</p>
-                                        </div>
-                                    </div>
-                                )
-                            }) }
-                        </div>
+                        <Inbox inbox={inbox}/>
                     </Col>
                     <Col xs="3">
-                        <div>
-                            <DayPicker
-                                month={new Date()}
-                                modifiersStyles={modifiersStyles}
-                            />
-                        </div>
+                        <Calendar/>
                     </Col>
                 </Row>
             </div>
