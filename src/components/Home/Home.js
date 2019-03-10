@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap';
 import BarGraph from './BarGraph';
 import Inbox from './Inbox';
 import Calendar from './Calendar';
+import LineGraph from './LineGraph';
 
 class Home extends Component {
     state = {
@@ -164,10 +165,19 @@ class Home extends Component {
     };
 
     render () {
-        const {inbox, select, data} = this.state;
+        const {inbox, select, data, lineData} = this.state;
 
         return (
             <div className="home-wrapper">
+                <Row>
+                    <Col xs="9">
+                        <div className="line-wrapper">
+                            <LineGraph
+                                linedata={lineData}
+                            />
+                        </div>
+                    </Col>
+                </Row>
                 <Row>
                     <Col xs="6">
                         <BarGraph
