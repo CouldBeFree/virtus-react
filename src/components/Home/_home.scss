@@ -88,7 +88,19 @@
     }
   }
 
-  .react-calendar{
+  .DayPicker{
     background: #2f3242;
+
+    &-Caption{
+      color: #ffffff;
+    }
+
+    &-WeekdaysRow{
+      color: #9ea3b4;
+    }
+
+    &-Week{
+      color: #ffffff;
+    }
   }
 }
