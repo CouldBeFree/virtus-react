@@ -6,7 +6,7 @@ const BarGraph = ({handleChange, select, data}) => (
         <div className="sales-report__top d-flex justify-content-between">
             <h3>Sales report</h3>
             <div className="select d-flex justify-content-between">
-                <p>Show</p>
+                <p>Show:</p>
                 <select value={select} onChange={handleChange}>
                     <option value="year">Year</option>
                     <option value="month">Month</option>
