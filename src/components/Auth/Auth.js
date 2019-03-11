@@ -7,6 +7,7 @@ import firebase from "../../firebase";
 import loginUser from '../../actions/loginUser';
 import { connect } from 'react-redux';
 import { createBrowserHistory } from 'history';
+import md5 from 'md5';
 
 const history = createBrowserHistory();
 
@@ -16,10 +17,12 @@ class Auth extends Component {
         activeTab: '1',
         email: '',
         password: '',
+        name: '',
         disabled: true,
         validMail: false,
         errors: [],
-        success: null
+        success: null,
+        usersRef: firebase.database().ref('users')
     };
 
     validateEmail = email => {
@@ -28,17 +31,34 @@ class Auth extends Component {
     };
 
     handleRegister = event => {
-        const {email, password, errors} = this.state;
+        const {email, password, errors, name} = this.state;
         event.preventDefault();
 
         if(this.isFormEmpty(this.state)) {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(user => {
+            firebase
+                .auth().createUserWithEmailAndPassword(email, password)
+                .then(createdUser => {
+                    console.log(createdUser);
+                    createdUser.user.updateProfile({
+                        displayName: name,
+                        photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
+                    })
+                        .then(() => {
+                            /*this.saveUser(createdUser).then(() => {
+                                console.log('User saved')
+                            })*/
+                            console.log('User saved')
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            /*this.setState({
+                                errors: this.state.errors.concat(err)
+                            })*/
+                        });
                     let message = 'Registration successful';
                     this.setState({
                         success: message
                     });
-                    console.log(user)
                 })
                 .catch(err => {
                     this.setState({
@@ -49,6 +69,13 @@ class Auth extends Component {
         } else {
             return false
         }
+    };
+
+    saveUser = createdUser => {
+        return this.state.usersRef.child(createdUser.user.uid).set({
+            name: createdUser.user.displayName,
+            avatar: createdUser.user.photoURL
+        });
     };
 
     isFormEmpty = ({password}) => {

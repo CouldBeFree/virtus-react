@@ -13,6 +13,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import { connect } from 'react-redux';
 import './App.scss';
 import loginUser from "../actions/loginUser";
+import firebase from '../firebase';
 
 const customHistory = createBrowserHistory();
 
@@ -20,6 +21,15 @@ class App extends Component {
 
     componentDidMount () {
         // customHistory.push('/auth');
+        firebase.auth().onAuthStateChanged(user => {
+            if(user) {
+                // this.props.history.push('/');
+                console.log(user);
+            } else {
+                // this.props.history.push('/login');
+                console.log('error')
+            }
+        })
     }
 
     logoutUser = () => {
@@ -29,10 +39,9 @@ class App extends Component {
 
     render() {
         const { auth } = this.props;
-        const test = true;
         return (
             <Router history={customHistory}>
-                { test ? (
+                { auth ? (
                     <div className="wrap">
                         <div>
                             <div className="top-bar">
@@ -45,17 +54,17 @@ class App extends Component {
                                     </Col>
                                     <Col xs="11" className="main">
                                         <Switch>
-                                            {/*<PrivateRoute exact path="/" component={Home}/>
+                                            <PrivateRoute exact path="/" component={Home}/>
                                             <PrivateRoute exact path="/projects" component={Projects}/>
                                             <PrivateRoute exact path="/statistics" component={Statistics}/>
                                             <PrivateRoute exact path="/trello" component={Trello}/>
-                                            <PrivateRoute exact path="/chat" component={Chat}/>*/}
+                                            <PrivateRoute exact path="/chat" component={Chat}/>
 
-                                            <Route exact path="/" component={Home}/>
+                                            {/*<Route exact path="/" component={Home}/>
                                             <Route exact path="/projects" component={Projects}/>
                                             <Route exact path="/statistics" component={Statistics}/>
                                             <Route exact path="/trello" component={Trello}/>
-                                            <Route exact path="/chat" component={Chat}/>
+                                            <Route exact path="/chat" component={Chat}/>*/}
                                         </Switch>
                                     </Col>
                                 </Row>

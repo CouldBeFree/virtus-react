@@ -5,6 +5,9 @@ const Register = ({submit, getValue, errors, success}) => (
     <div>
         <Form onSubmit={submit}>
             <FormGroup>
+                <Input type="name" name="name" placeholder="Username" onChange={getValue} />
+            </FormGroup>
+            <FormGroup>
                 <Input type="email" name="email" placeholder="Email" onChange={getValue} />
             </FormGroup>
             <FormGroup>
