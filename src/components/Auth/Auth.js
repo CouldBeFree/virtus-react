@@ -4,7 +4,7 @@ import Register from './Register';
 import Login from './Login';
 import classnames from 'classnames';
 import firebase from "../../firebase";
-import loginUser from '../../actions/loginUser';
+import { loginUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import md5 from 'md5';
@@ -96,6 +96,7 @@ class Auth extends Component {
 
     handleLogin = event => {
         const { email, password } = this.state;
+        let errors = [];
         event.preventDefault();
         if(this.isFormEmpty(this.state)) {
             firebase.auth().signInWithEmailAndPassword(email, password)
@@ -105,8 +106,10 @@ class Auth extends Component {
                     history.push('/');
                 })
                 .catch(err => {
-                    console.log(err.message);
-                    this.props.loginUser(false)
+                    this.props.loginUser(false);
+                    this.setState({
+                        errors: errors.concat(err.message)
+                    });
                 })
         }
     };
@@ -114,7 +117,6 @@ class Auth extends Component {
     handleChange = event => {
         const {email} = this.state;
         const validMail = this.validateEmail(email);
-        console.log(validMail);
         this.setState({
             [event.target.name] : event.target.value
         });

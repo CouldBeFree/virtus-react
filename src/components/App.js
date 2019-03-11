@@ -12,7 +12,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import PrivateRoute from '../components/PrivateRoute';
 import { connect } from 'react-redux';
 import './App.scss';
-import loginUser from "../actions/loginUser";
+import { loginUser } from "../actions/index";
 import firebase from '../firebase';
 
 const customHistory = createBrowserHistory();
@@ -20,13 +20,13 @@ const customHistory = createBrowserHistory();
 class App extends Component {
 
     componentDidMount () {
-        // customHistory.push('/auth');
         firebase.auth().onAuthStateChanged(user => {
             if(user) {
-                // this.props.history.push('/');
                 console.log(user);
+                customHistory.push('/');
+                this.props.loginUser(true);
             } else {
-                // this.props.history.push('/login');
+                customHistory.push('/auth');
                 console.log('error')
             }
         })
@@ -35,6 +35,10 @@ class App extends Component {
     logoutUser = () => {
         this.props.loginUser(false);
         customHistory.push('/auth');
+        firebase
+            .auth()
+            .signOut()
+            .then(() => console.log('Signed out'))
     };
 
     render() {
