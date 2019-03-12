@@ -14,13 +14,19 @@ import { connect } from 'react-redux';
 import './App.scss';
 import { loginUser, setUser, clearUser } from "../actions/index";
 import firebase from '../firebase';
+import logo from '../static/logo.png';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const customHistory = createBrowserHistory();
 
 class App extends Component {
+    state = {
+        dropdownOpen: false
+    };
 
     componentDidMount () {
-        const { loginUser, setUser, clearUser } = this.props;
+        const { loginUser, setUser, clearUser, user } = this.props;
+        console.log(user);
         firebase.auth().onAuthStateChanged(user => {
             if(user) {
                 console.log(user);
@@ -46,6 +52,12 @@ class App extends Component {
             .then(() => console.log('Signed out'))
     };
 
+    toggle = () => {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
+    };
+
     render() {
         const { auth } = this.props;
         return (
@@ -53,8 +65,24 @@ class App extends Component {
                 { auth ? (
                     <div className="wrap">
                         <div>
-                            <div className="top-bar">
-                                <button onClick={this.logoutUser}>Logout</button>
+                            <div className="top-bar d-flex justify-content-between align-items-center">
+                                <div className="logo">
+                                    <img onClick={() => customHistory.push('/')} src={logo} alt="virtus"/>
+                                </div>
+                                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                    <DropdownToggle caret>
+                                        Dropdown
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem header>Header</DropdownItem>
+                                        <DropdownItem>Some Action</DropdownItem>
+                                        <DropdownItem disabled>Action (disabled)</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>Foo Action</DropdownItem>
+                                        <DropdownItem>Bar Action</DropdownItem>
+                                        <DropdownItem>Quo Action</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
                             </div>
                             <div className="wrapper">
                                 <Row>
@@ -82,7 +110,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return{
-        auth: state.auth.isAuthenticated
+        auth: state.auth.isAuthenticated,
+        user: state.currentUser
     }
 };
 
