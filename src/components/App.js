@@ -36,8 +36,10 @@ class App extends Component {
     }
 
     logoutUser = () => {
-        this.props.loginUser(false);
+        const { loginUser, clearUser } = this.props;
+        loginUser(false);
         customHistory.push('/auth');
+        clearUser();
         firebase
             .auth()
             .signOut()
@@ -66,12 +68,6 @@ class App extends Component {
                                             <PrivateRoute exact path="/statistics" component={Statistics}/>
                                             <PrivateRoute exact path="/trello" component={Trello}/>
                                             <PrivateRoute exact path="/chat" component={Chat}/>
-
-                                            {/*<Route exact path="/" component={Home}/>
-                                            <Route exact path="/projects" component={Projects}/>
-                                            <Route exact path="/statistics" component={Statistics}/>
-                                            <Route exact path="/trello" component={Trello}/>
-                                            <Route exact path="/chat" component={Chat}/>*/}
                                         </Switch>
                                     </Col>
                                 </Row>

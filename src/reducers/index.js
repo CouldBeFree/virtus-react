@@ -31,7 +31,7 @@ const setUser = (state = userState, action) => {
             };
         case CLEAR_USER:
             return{
-                ...state
+                currentUser: action.payload.currentUser
             };
         default:
             return state
