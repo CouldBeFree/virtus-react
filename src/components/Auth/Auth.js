@@ -44,10 +44,10 @@ class Auth extends Component {
                         photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
                     })
                         .then(() => {
-                            /*this.saveUser(createdUser).then(() => {
+                            this.saveUser(createdUser).then(() => {
                                 console.log('User saved')
-                            })*/
-                            console.log('User saved')
+                            })
+                            // console.log('User saved')
                         })
                         .catch(err => {
                             console.log(err);

@@ -4,12 +4,12 @@ import "firebase/database";
 import "firebase/storage";
 
 let config = {
-    apiKey: "AIzaSyDCmoOTRuA2pYzmIG0x2BEXDmeH5UogrKA",
-    authDomain: "virtus-ecd33.firebaseapp.com",
-    databaseURL: "https://virtus-ecd33.firebaseio.com",
-    projectId: "virtus-ecd33",
-    storageBucket: "virtus-ecd33.appspot.com",
-    messagingSenderId: "609830186037"
+    apiKey: "AIzaSyAG1pggMaU3AqwBXd8CZbYxE52x1cS2jm0",
+    authDomain: "slack-clone-64501.firebaseapp.com",
+    databaseURL: "https://slack-clone-64501.firebaseio.com",
+    projectId: "slack-clone-64501",
+    storageBucket: "slack-clone-64501.appspot.com",
+    messagingSenderId: "618453639413"
 };
 firebase.initializeApp(config);
 
