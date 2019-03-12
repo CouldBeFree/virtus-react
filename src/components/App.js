@@ -71,7 +71,11 @@ class App extends Component {
                                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                     <DropdownToggle caret>
                                         {console.log(this.props.user)}
-                                        {<img src={this.props.user.photoURL} alt="user"/>}
+                                        {
+                                            <div className="image-wrap">
+                                                <img src={this.props.user.photoURL} alt="user"/>
+                                            </div>
+                                        }
                                     </DropdownToggle>
                                     <DropdownMenu>
                                         <DropdownItem header>{this.props.user.displayName}</DropdownItem>
