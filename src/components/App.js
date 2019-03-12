@@ -25,8 +25,7 @@ class App extends Component {
     };
 
     componentDidMount () {
-        const { loginUser, setUser, clearUser, user } = this.props;
-        console.log(user);
+        const { loginUser, setUser, clearUser } = this.props;
         firebase.auth().onAuthStateChanged(user => {
             if(user) {
                 console.log(user);
@@ -71,10 +70,11 @@ class App extends Component {
                                 </div>
                                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                     <DropdownToggle caret>
-                                        Dropdown
+                                        {console.log(this.props.user)}
+                                        {<img src={this.props.user.photoURL} alt="user"/>}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem header>Header</DropdownItem>
+                                        <DropdownItem header>{this.props.user.displayName}</DropdownItem>
                                         <DropdownItem>Some Action</DropdownItem>
                                         <DropdownItem disabled>Action (disabled)</DropdownItem>
                                         <DropdownItem divider />
@@ -109,9 +109,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return{
         auth: state.auth.isAuthenticated,
-        user: state.currentUser
+        user: state.user.currentUser
     }
 };
 
