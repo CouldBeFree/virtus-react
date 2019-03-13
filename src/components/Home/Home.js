@@ -4,6 +4,7 @@ import BarGraph from './BarGraph';
 import Inbox from './Inbox';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
+import Projects from './Projects';
 
 class Home extends Component {
     state = {
@@ -64,6 +65,38 @@ class Home extends Component {
                 name: 'Lyall Roach',
                 time: 'Today, 5:32 PM',
                 content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.'
+            }
+        ],
+        projects: [
+            {
+                id: 1,
+                project: 'Mobile App',
+                company: 'Google',
+                price: 15000
+            },
+            {
+                id: 2,
+                project: 'Dashboard',
+                company: 'Amazon',
+                price: 30000
+            },
+            {
+                id: 3,
+                project: 'Site develompent',
+                company: 'Amazon',
+                price: 25000
+            },
+            {
+                id: 4,
+                project: 'UI mockup',
+                company: 'Symu.co',
+                price: 10000
+            },
+            {
+                id: 5,
+                project: 'Mobile App',
+                company: 'Google',
+                price: 1500
             }
         ]
     };
@@ -165,7 +198,7 @@ class Home extends Component {
     };
 
     render () {
-        const {inbox, select, data, lineData} = this.state;
+        const {inbox, select, data, lineData, projects} = this.state;
 
         return (
             <div className="home-wrapper">
@@ -176,6 +209,9 @@ class Home extends Component {
                                 linedata={lineData}
                             />
                         </div>
+                    </Col>
+                    <Col xs="3">
+                        <Projects projects={projects}/>
                     </Col>
                 </Row>
                 <Row>

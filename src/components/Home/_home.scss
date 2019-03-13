@@ -106,10 +106,22 @@
 
   .line-wrapper{
     height: 100vh;
-    max-height: 300px;
+    max-height: 350px;
   }
 
   .recharts-legend-item-text{
     color: #ffffff;
+  }
+
+  .project-wrapper{
+
+    .project-title{
+      color: #ffffff;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 0;
+      padding: 10px 0;
+      background: #3a3e52;
+    }
   }
 }
