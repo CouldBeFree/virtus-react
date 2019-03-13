@@ -38,13 +38,23 @@
   }
 
   .dropdown-menu{
-    transform: translate3d(-50px, 38px, 0px)!important;
+    transform: translate3d(-106px, 75px, 0px)!important;
   }
 
   .image-wrap{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    overflow: hidden;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .dropdown-toggle{
+    padding: 0 5px;
   }
 }
 

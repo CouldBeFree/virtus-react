@@ -70,7 +70,6 @@ class App extends Component {
                                 </div>
                                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                     <DropdownToggle caret>
-                                        {console.log(this.props.user)}
                                         {
                                             <div className="image-wrap">
                                                 <img src={this.props.user.photoURL} alt="user"/>
@@ -79,12 +78,7 @@ class App extends Component {
                                     </DropdownToggle>
                                     <DropdownMenu>
                                         <DropdownItem header>{this.props.user.displayName}</DropdownItem>
-                                        <DropdownItem>Some Action</DropdownItem>
-                                        <DropdownItem disabled>Action (disabled)</DropdownItem>
-                                        <DropdownItem divider />
-                                        <DropdownItem>Foo Action</DropdownItem>
-                                        <DropdownItem>Bar Action</DropdownItem>
-                                        <DropdownItem>Quo Action</DropdownItem>
+                                        <DropdownItem onClick={this.logoutUser}>Logout</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
