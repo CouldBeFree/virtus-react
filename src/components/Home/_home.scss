@@ -114,6 +114,9 @@
   }
 
   .project-wrapper{
+    background: #2f3242;
+    height: 280px;
+    overflow-y: scroll;
 
     .project-title{
       color: #ffffff;
@@ -122,6 +125,22 @@
       margin-bottom: 0;
       padding: 10px 0;
       background: #3a3e52;
+    }
+
+    p{
+      padding-left: 20px;
+    }
+
+    .name{
+      color: #ffffff;
+    }
+
+    .company{
+      padding-right: 10px;
+    }
+
+    .project-info{
+      color: #858a9a;
     }
   }
 }

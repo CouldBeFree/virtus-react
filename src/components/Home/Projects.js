@@ -7,7 +7,8 @@ const Projects = ({projects}) => (
             projects.map((item) => {
                 return (
                     <div key={item.id}>
-                        <p>{item.project}</p>
+                        <p className="name">{item.project}</p>
+                        <p className="project-info"><span className="company">{item.company}</span><span>{item.price}</span></p>
                     </div>
                 )
             })
