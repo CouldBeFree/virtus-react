@@ -19,6 +19,6 @@ const Inbox = ({inbox}) => (
             )
         }) }
     </div>
-)
+);
 
 export default Inbox;
