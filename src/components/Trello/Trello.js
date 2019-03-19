@@ -7,11 +7,11 @@ class Trello extends Component {
             lanes: [
                 {
                     id: 'lane1',
-                    title: 'Planned Tasks',
-                    label: '2/2',
+                    title: 'Quened',
+                    label: '2 projects $1500',
                     cards: [
-                        {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', cardDraggable: true},
-                        {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}, cardDraggable: true}
+                        {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
+                        {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
                     ]
                 },
                 {
@@ -23,11 +23,20 @@ class Trello extends Component {
             ]
         }
     };
+
+    handleDragEnd = () => {
+        alert('True')
+    };
+
     render () {
         return (
             <div>
                 <h1>I am the Trello component</h1>
-                <Board data={this.state.data} draggable />
+                <Board
+                    data={this.state.data}
+                    draggable
+                    handleDragEnd={this.handleDragEnd}
+                />
             </div>
         )
     }
