@@ -4,7 +4,7 @@ import {Router, Route, Switch} from 'react-router-dom';
 import Home from '../components/Home/Home';
 import Projects from '../components/Projects/Projects';
 import Statistics from '../components/Statistics/Statistics';
-import Trello from '../components/Trello/Trello';
+import Users from '../components/Users/Users';
 import Chat from '../components/Chat/Chat';
 import Sidebar from './Sidebar/Sidebar';
 import { Row, Col } from 'reactstrap';
@@ -92,8 +92,8 @@ class App extends Component {
                                             <PrivateRoute exact path="/" component={Home}/>
                                             <PrivateRoute exact path="/projects" component={Projects}/>
                                             <PrivateRoute exact path="/statistics" component={Statistics}/>
-                                            <PrivateRoute exact path="/trello" component={Trello}/>
                                             <PrivateRoute exact path="/chat" component={Chat}/>
+                                            <PrivateRoute exact path="/users" component={Users}/>
                                         </Switch>
                                     </Col>
                                 </Row>

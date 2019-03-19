@@ -14,10 +14,10 @@ const Sidebar = () => (
                 <NavLink to="/statistics"><i className="fas fa-chart-line"></i></NavLink>
             </li>
             <li className="sidebar-item">
-                <NavLink to="/trello"><i className="fas fa-envelope"></i></NavLink>
+                <NavLink to="/chat"><i className="fas fa-comments"></i></NavLink>
             </li>
             <li className="sidebar-item">
-                <NavLink to="/chat"><i className="fas fa-comments"></i></NavLink>
+                <NavLink to="/users"><i className="fas fa-user-friends"></i></NavLink>
             </li>
         </ul>
     </div>
