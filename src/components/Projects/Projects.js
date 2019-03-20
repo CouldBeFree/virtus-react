@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import Card from './Card';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
+import TopBar from './TopBar';
 const update = require('immutability-helper');
 
 class Projects extends Component {
@@ -53,11 +54,9 @@ class Projects extends Component {
 
     render() {
         return (
-            <div className="Projects">
-                <header className="Projects-header">
-                    <h1 className="Projects-title">Welcome to React</h1>
-                </header>
-                <div className="Projects-intro">
+            <div className="projects-wrap">
+                <TopBar/>
+                <div className="projects__item">
                     <div className="card-container">
                         {this.state.cards.map((card, i) => (
                             <Card
