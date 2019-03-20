@@ -4,7 +4,17 @@
   }
 }
 
-.top-bar{
+.inner-bar{
   background: #2481cd;
-  padding: 10px 15px 10px 40px;
+  padding: 35px 15px 35px 40px;
+  font-size: 18px;
+
+  .count{
+    color: #ffffff;
+  }
+  
+  .workflow{
+    color: #2a2c3b;
+    padding-left: 40px;
+  }
 }

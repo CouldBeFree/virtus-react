@@ -53,12 +53,16 @@ class Projects extends Component {
     };
 
     render() {
+        const { cards } = this.state;
+        let cardLength = cards.length;
         return (
             <div className="projects-wrap">
-                <TopBar/>
+                <TopBar
+                    projects={cardLength}
+                />
                 <div className="projects__item">
                     <div className="card-container">
-                        {this.state.cards.map((card, i) => (
+                        {cards.map((card, i) => (
                             <Card
                                 key={card.id}
                                 index={i}

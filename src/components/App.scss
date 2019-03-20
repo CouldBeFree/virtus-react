@@ -10,10 +10,12 @@
   background-color: #2f3242;
   min-height: 100vh;
   box-shadow: 0 3px 80px rgba(23, 24, 32, 0.2);
+  flex-basis: 95px;
 }
 
 .main{
   background: #2a2c3b;
+  flex-basis: calc(100% - 95px);
 
   h1{
     color: #ffffff;
@@ -26,7 +28,7 @@
 
 .wrapper{
   width: 100%;
-  padding: 0 15px;
+  overflow: hidden;
 }
 
 .top-bar{

@@ -82,21 +82,19 @@ class App extends Component {
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
-                            <div className="wrapper">
-                                <Row>
-                                    <Col xs="1" className="sidebar-wrap">
-                                        <Sidebar/>
-                                    </Col>
-                                    <Col xs="11" className="main">
-                                        <Switch>
-                                            <PrivateRoute exact path="/" component={Home}/>
-                                            <PrivateRoute exact path="/projects" component={Projects}/>
-                                            <PrivateRoute exact path="/statistics" component={Statistics}/>
-                                            <PrivateRoute exact path="/chat" component={Chat}/>
-                                            <PrivateRoute exact path="/users" component={Users}/>
-                                        </Switch>
-                                    </Col>
-                                </Row>
+                            <div className="wrapper d-flex justify-content-between">
+                                <div className="sidebar-wrap">
+                                    <Sidebar/>
+                                </div>
+                                <div className="main">
+                                    <Switch>
+                                        <PrivateRoute exact path="/" component={Home}/>
+                                        <PrivateRoute exact path="/projects" component={Projects}/>
+                                        <PrivateRoute exact path="/statistics" component={Statistics}/>
+                                        <PrivateRoute exact path="/chat" component={Chat}/>
+                                        <PrivateRoute exact path="/users" component={Users}/>
+                                    </Switch>
+                                </div>
                             </div>
                         </div>
                     </div>
