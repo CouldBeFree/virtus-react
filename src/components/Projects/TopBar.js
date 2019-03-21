@@ -9,6 +9,7 @@ const TopBar = ({projects, isOpen, toggle, company, select}) => (
         <div className="inner-bar__right d-flex align-items-center justify-content-between">
             <span>Show projects: </span>
             <select onChange={select}>
+                <option value="All">All</option>
                 <option value="Microsoft">Microsoft</option>
                 <option value="Google">Google</option>
                 <option value="Symu.co">Symu</option>

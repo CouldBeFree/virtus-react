@@ -87,7 +87,7 @@ class Card extends Component {
                     <p className="value">${value}</p>
                     <p className="deadline">{deadline}</p>
                     <p className="time-spent">{time} hours</p>
-                    <div className="progress-value d-flex align-items-center">
+                    <div className="progress-value justify-content-between d-flex align-items-center">
                         <span>% {progress}</span>
                         <Progress color={progress === 0 ? '#ffffff' : progress < 100 ? 'primary' : 'success'} value={progress} />
                     </div>

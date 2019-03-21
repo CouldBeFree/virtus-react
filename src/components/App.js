@@ -7,7 +7,6 @@ import Statistics from '../components/Statistics/Statistics';
 import Users from '../components/Users/Users';
 import Chat from '../components/Chat/Chat';
 import Sidebar from './Sidebar/Sidebar';
-import { Row, Col } from 'reactstrap';
 import createBrowserHistory from 'history/createBrowserHistory';
 import PrivateRoute from '../components/PrivateRoute';
 import { connect } from 'react-redux';
@@ -105,7 +104,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return{
         auth: state.auth.isAuthenticated,
         user: state.user.currentUser
