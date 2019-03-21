@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash/flow';
+import { Progress } from 'reactstrap';
 
 const style = {
     border: '1px dashed gray',
@@ -53,21 +54,49 @@ const cardTarget = {
     },
 };
 
-class Card extends React.Component {
+class Card extends Component {
     render() {
         const {
-            text,
+            project,
+            company,
+            value,
+            deadline,
+            time,
+            progress,
+            status,
+            name,
+            position,
             isDragging,
             connectDragSource,
             connectDropTarget,
         } = this.props;
         const opacity = isDragging ? 0 : 1;
+        const cardStyle = {
+            borderLeft: `4px solid ${ progress === 0 ? '#ffffff' : progress < 100 ? '#007BFF' : '#28A745' }`
+        };
 
         return (
             connectDragSource &&
             connectDropTarget &&
             connectDragSource(
-                connectDropTarget(<div style={{ ...style, opacity }}>{text}Test</div>),
+                connectDropTarget(<div className="d-flex justify-content-between align-items-center card-item" style={{...cardStyle, opacity }}>
+                    <p className="title">
+                        <span className="project">{project}</span>
+                        <span className="sub-item">{company}</span>
+                    </p>
+                    <p className="value">${value}</p>
+                    <p className="deadline">{deadline}</p>
+                    <p className="time-spent">{time} hours</p>
+                    <div className="progress-value d-flex justify-content-between align-items-center">
+                        <span>% {progress}</span>
+                        <Progress color={progress === 0 ? '#ffffff' : progress < 100 ? 'primary' : 'success'} value={progress} />
+                    </div>
+                    <p className="status">{status}</p>
+                    <p className="assigned">
+                        <span className="name">{name}</span>
+                        <span className="sub-item">{position}</span>
+                    </p>
+                </div>),
             )
         );
     }

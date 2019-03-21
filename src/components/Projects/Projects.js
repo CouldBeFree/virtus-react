@@ -63,7 +63,7 @@ class Projects extends Component {
                 value: 1500,
                 deadline: '8 August 2019',
                 timeSpent: 0,
-                progress: 40,
+                progress: 0,
                 status: 'Quened',
                 name: 'Michelle Stewart',
                 position: 'Account'
@@ -118,12 +118,31 @@ class Projects extends Component {
                 />
                 <div className="projects__item">
                     <div className="card-container">
+                        <div className="card-head">
+                            <ul className="d-flex justify-content-between">
+                                <li className="title">Project title</li>
+                                <li className="value">Value</li>
+                                <li className="deadline">Deadline</li>
+                                <li className="time-spent">Time spent</li>
+                                <li className="progress-value">Progress</li>
+                                <li className="status">Status</li>
+                                <li className="assigned">Assigned to</li>
+                            </ul>
+                        </div>
                         {cards.map((card, i) => (
                             <Card
                                 key={card.id}
                                 index={i}
                                 id={card.id}
-                                text={card.text}
+                                project={card.project}
+                                company={card.company}
+                                value={card.value}
+                                deadline={card.deadline}
+                                time={card.timeSpent}
+                                progress={card.progress}
+                                status={card.status}
+                                name={card.name}
+                                position={card.position}
                                 moveCard={this.moveCard}
                             />
                         ))}
