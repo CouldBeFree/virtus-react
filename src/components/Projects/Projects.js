@@ -93,6 +93,13 @@ class Projects extends Component {
                 position: 'Account'
             },
         ],
+        dropdownOpen: false
+    };
+
+    toggle = () => {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
     };
 
     moveCard = (dragIndex, hoverIndex) => {
@@ -109,12 +116,15 @@ class Projects extends Component {
     };
 
     render() {
-        const { cards } = this.state;
+        const { cards, dropdownOpen } = this.state;
         let cardLength = cards.length;
         return (
             <div className="projects-wrap">
                 <TopBar
                     projects={cardLength}
+                    isOpen={dropdownOpen}
+                    toggle={this.toggle}
+                    company={cards}
                 />
                 <div className="projects__item">
                     <div className="card-container">

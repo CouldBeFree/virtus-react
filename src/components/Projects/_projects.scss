@@ -1,7 +1,17 @@
 .inner-bar{
   background: #2481cd;
-  padding: 35px 15px 35px 40px;
+  padding: 35px 25px 35px 40px;
   font-size: 18px;
+
+  &__right{
+    color: #ffffff;
+    letter-spacing: 0.32px;
+    font-size: 16px;
+
+    span{
+      padding-right: 25px;
+    }
+  }
 
   .count{
     color: #ffffff;
@@ -35,11 +45,11 @@
 }
 
 .deadline{
-  flex-basis: 7%;
+  flex-basis: 9%;
 }
 
 .time-spent{
-  flex-basis: 6%;
+  flex-basis: 8%;
 }
 
 .sub-item{
@@ -82,4 +92,8 @@
       display: block;
     }
   }
+}
+
+.dropdown{
+  background: transparent;
 }
