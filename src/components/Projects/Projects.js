@@ -93,7 +93,8 @@ class Projects extends Component {
                 position: 'Account'
             },
         ],
-        dropdownOpen: false
+        dropdownOpen: false,
+        project: 'all'
     };
 
     toggle = () => {
@@ -115,6 +116,17 @@ class Projects extends Component {
         )
     };
 
+    selectItem = event => {
+        const { cards } = this.state;
+        const selected = event.target.value;
+        const filtered = cards.filter((item) => {
+            return item.company === selected
+        });
+        this.setState({
+           cards: filtered
+        })
+    };
+
     render() {
         const { cards, dropdownOpen } = this.state;
         let cardLength = cards.length;
@@ -125,6 +137,7 @@ class Projects extends Component {
                     isOpen={dropdownOpen}
                     toggle={this.toggle}
                     company={cards}
+                    select={this.selectItem}
                 />
                 <div className="projects__item">
                     <div className="card-container">

@@ -59,6 +59,10 @@
 .progress-value{
   flex-basis: 20%;
 
+  span{
+    padding-right: 10px;
+  }
+
   .progress{
     width: 80%;
   }
