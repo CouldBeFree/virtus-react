@@ -128,9 +128,18 @@ class Statistics extends Component {
     };
 
     select = (event) => {
+        const { year, month, week } = this.props;
+        let circular;
         const value = event.target.value;
+        if(value === 'year') {
+            circular = year
+        } else if (value === 'week'){
+            circular = week
+        } else {
+            circular = month
+        }
         this.setState({
-            selected: value
+            circularData: circular
         })
     };
 
@@ -166,9 +175,9 @@ class Statistics extends Component {
                     <div className="select-wrap">
                         <span>Show: </span>
                         <select onChange={this.select}>
+                            <option value="year">Year</option>
                             <option value="week">Week</option>
                             <option value="month">Month</option>
-                            <option value="year">Year</option>
                         </select>
                     </div>
                 </div>
@@ -186,7 +195,9 @@ class Statistics extends Component {
 
 const mapStateToProps = state => {
     return {
-        year: state.year
+        year: state.year,
+        week: state.week,
+        month: state.month
     }
 };
 

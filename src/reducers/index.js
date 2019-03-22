@@ -154,9 +154,63 @@ const yearData = (state = circularYear) => {
     return state
 };
 
+const circularWeek = [
+    {
+        id: 1,
+        percentage: 56,
+        value: 950,
+        info: 'views'
+    },
+    {
+        id: 2,
+        percentage: 87,
+        value: 1250,
+        info: 'visitors'
+    },
+    {
+        id: 3,
+        percentage: 16,
+        value: 450,
+        info: 'impressions'
+    }
+];
+
+const weekData = (state = circularWeek) => {
+    return state
+};
+
+/////////////////////////////////////////////////
+
+const circularMonth = [
+    {
+        id: 1,
+        percentage: 37,
+        value: 555,
+        info: 'views'
+    },
+    {
+        id: 2,
+        percentage: 69,
+        value: 3450,
+        info: 'visitors'
+    },
+    {
+        id: 3,
+        percentage: 70,
+        value: 2000,
+        info: 'impressions'
+    }
+];
+
+const monthData = (state = circularMonth) => {
+    return state
+};
+
 export default combineReducers({
     auth: authReducer,
     user: setUser,
     card: getCards,
-    year: yearData
+    year: yearData,
+    week: weekData,
+    month: monthData
 })

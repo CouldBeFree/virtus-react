@@ -21,6 +21,18 @@
     color: #2a2c3b;
     padding-left: 40px;
   }
+
+  select{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #2481CD;
+    border-radius: 18px;
+    color: #ffffff;
+    padding: 5px 20px;
+
+    &:focus{
+      outline: 0;
+    }
+  }
 }
 
 .card-head{
