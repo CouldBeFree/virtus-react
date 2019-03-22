@@ -129,8 +129,31 @@ const getCards = (state = cards) => {
     return state
 };
 
+const circularYear = [
+    {
+        percentage: 13,
+        value: 1300,
+        info: 'views'
+    },
+    {
+        percentage: 8,
+        value: 800,
+        info: 'visitors'
+    },
+    {
+        percentage: 38,
+        value: 3800,
+        info: 'impressions'
+    }
+];
+
+const yearData = (state = circularYear) => {
+    return state
+};
+
 export default combineReducers({
     auth: authReducer,
     user: setUser,
-    card: getCards
+    card: getCards,
+    year: yearData
 })

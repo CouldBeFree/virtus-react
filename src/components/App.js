@@ -85,7 +85,7 @@ class App extends Component {
                                 <div className="sidebar-wrap">
                                     <Sidebar/>
                                 </div>
-                                <div className="main">
+                                <div className="main" id="main">
                                     <Switch>
                                         <PrivateRoute exact path="/" component={Home}/>
                                         <PrivateRoute exact path="/projects" component={Projects}/>
