@@ -131,17 +131,20 @@ const getCards = (state = cards) => {
 
 const circularYear = [
     {
-        percentage: 13,
+        id: 1,
+        percentage: 75,
         value: 1300,
         info: 'views'
     },
     {
-        percentage: 8,
+        id: 2,
+        percentage: 35,
         value: 800,
         info: 'visitors'
     },
     {
-        percentage: 38,
+        id: 3,
+        percentage: 62,
         value: 3800,
         info: 'impressions'
     }

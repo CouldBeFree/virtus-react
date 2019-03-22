@@ -112,7 +112,8 @@ class Statistics extends Component {
                 ]
             },
         },
-        selected: 'week'
+        selected: 'week',
+        circularData: []
     };
 
     getHeight = () => {
@@ -134,20 +135,49 @@ class Statistics extends Component {
     };
 
     componentDidMount(){
-        console.log(this.props)
+        const { year } = this.props;
+        console.log(this.props);
+        this.setState({
+            circularData: year
+        })
     }
 
+    datasetKeyProvider = () => {
+        return Math.random();
+    };
+
     render () {
+        const {circularData} = this.state;
         return (
             <div>
-                <ProgressBar
-                    select={this.select}
-                />
+                <div className="progress-block d-flex align-items-center justify-content-between">
+                    <div className="circular-wrap d-flex">
+                        {circularData.map((item) => {
+                            return (
+                                <ProgressBar
+                                    key={item.id}
+                                    percent={item.percentage}
+                                    value={item.value}
+                                    info={item.info}
+                                />
+                            )
+                        })}
+                    </div>
+                    <div className="select-wrap">
+                        <span>Show: </span>
+                        <select onChange={this.select}>
+                            <option value="week">Week</option>
+                            <option value="month">Month</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+                </div>
                 <Bar
                     data={this.state.lineChartConfig}
                     height={this.getHeight()}
                     width={this.getWidth()}
                     options={this.state.option}
+                    datasetKeyProvider={this.datasetKeyProvider}
                 />
             </div>
         )
