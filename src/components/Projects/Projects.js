@@ -41,11 +41,16 @@ class Projects extends Component {
     selectItem = event => {
         const { card } = this.props;
         const selected = event.target.value;
-        const filtered = card.filter((item) => {
-            return item.company === selected
-        });
+        let filtered;
+        if(selected === 'All') {
+            filtered = card;
+        } else {
+            filtered = card.filter((item) => {
+                return item.company === selected
+            });
+        }
         this.setState({
-           cards: filtered
+            cards: filtered
         })
     };
 
