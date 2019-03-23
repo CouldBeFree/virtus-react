@@ -68,3 +68,29 @@
     }
   }
 }
+
+.table-wrap{
+  &__list{
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.table-head{
+  box-shadow: 0 3px 60px rgba(3, 3, 5, 0.2);
+  padding: 20px 0;
+  background: #3a3e52;
+  color: #9ca1b2;
+
+  i{
+    padding-left: 10px;
+  }
+
+  div{
+    div{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

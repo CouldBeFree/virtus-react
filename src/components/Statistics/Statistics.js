@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProgressBar from './progressBar';
 import {Bar} from 'react-chartjs-2';
 import { connect } from 'react-redux';
+import Table from './Table';
 import 'react-circular-progressbar/dist/styles.css';
 
 class Statistics extends Component {
@@ -113,7 +114,7 @@ class Statistics extends Component {
             },
         },
         selected: 'week',
-        circularData: []
+        circularData: this.props.year
     };
 
     getHeight = () => {
@@ -142,14 +143,6 @@ class Statistics extends Component {
             circularData: circular
         })
     };
-
-    componentDidMount(){
-        const { year } = this.props;
-        console.log(this.props);
-        this.setState({
-            circularData: year
-        })
-    }
 
     datasetKeyProvider = () => {
         return Math.random();
@@ -181,13 +174,18 @@ class Statistics extends Component {
                         </select>
                     </div>
                 </div>
-                <Bar
-                    data={this.state.lineChartConfig}
-                    height={this.getHeight()}
-                    width={this.getWidth()}
-                    options={this.state.option}
-                    datasetKeyProvider={this.datasetKeyProvider}
-                />
+                <div className="bar-block">
+                    <Bar
+                        data={this.state.lineChartConfig}
+                        height={this.getHeight()}
+                        width={this.getWidth()}
+                        options={this.state.option}
+                        datasetKeyProvider={this.datasetKeyProvider}
+                    />
+                </div>
+                <div className="table-block">
+                    <Table/>
+                </div>
             </div>
         )
     }
