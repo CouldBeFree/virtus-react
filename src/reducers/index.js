@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 // import authReducer from './authReducer';
 // import setUser from './setUser';
-import { AUTHENTICATE_USER, SET_USER, CLEAR_USER } from '../actions/types';
+import * as actionTypes from '../actions/types';
 
 const authenticatedState = {
     isAuthenticated: false
@@ -9,7 +9,7 @@ const authenticatedState = {
 
 const authReducer =  (state = authenticatedState, action) => {
     switch (action.type) {
-        case AUTHENTICATE_USER:
+        case actionTypes.AUTHENTICATE_USER:
             return{
                 ...state,
                 isAuthenticated: action.payload
@@ -25,11 +25,11 @@ const userState = {
 
 const setUser = (state = userState, action) => {
     switch (action.type) {
-        case SET_USER:
+        case actionTypes.SET_USER:
             return{
                 currentUser: action.payload.currentUser
             };
-        case CLEAR_USER:
+        case actionTypes.CLEAR_USER:
             return{
                 currentUser: action.payload.currentUser
             };
@@ -247,6 +247,34 @@ const table = (state = tableData) => {
     return state
 };
 
+const initialChannelState = {
+    currentChannel: null,
+    isPrivateChannel: false,
+    userPosts: null
+};
+
+const channel_reducer = (state = initialChannelState, action) => {
+    switch (action.type) {
+        case actionTypes.SET_CURRENT_CHANNEL:
+            return {
+                ...state,
+                currentChannel: action.payload.currentChannel
+            };
+        case actionTypes.SET_PRIVATE_CHANNEL:
+            return {
+                ...state,
+                isPrivateChannel: action.payload.isPrivateChannel
+            };
+        case actionTypes.SET_USER_POSTS:
+            return {
+                ...state,
+                userPosts: action.payload.userPosts
+            };
+        default:
+            return state;
+    }
+};
+
 export default combineReducers({
     auth: authReducer,
     user: setUser,
@@ -254,5 +282,6 @@ export default combineReducers({
     year: yearData,
     week: weekData,
     month: monthData,
-    table: table
+    table: table,
+    channel: channel_reducer
 })

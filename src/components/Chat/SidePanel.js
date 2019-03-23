@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setCurrentChannel, setPrivateChannel } from "../../actions";
 import firebase from "../../firebase";
 
 class SidePanel extends Component {
@@ -64,6 +65,17 @@ class SidePanel extends Component {
         });
     };
 
+    getChannelId = userId => {
+        const currentUserId = this.state.user.uid;
+        return userId < currentUserId
+            ? `${userId}/${currentUserId}`
+            : `${currentUserId}/${userId}`;
+    };
+
+    setActiveChannel = userId => {
+        this.setState({ activeChannel: userId });
+    };
+
     addStatusToUser = (userId, connected = true) => {
         const updatedUsers = this.state.users.reduce((acc, user) => {
             if (user.uid === userId) {
@@ -74,7 +86,7 @@ class SidePanel extends Component {
         this.setState({ users: updatedUsers });
     };
 
-    /*changeChannel = user => {
+    changeChannel = user => {
         const channelId = this.getChannelId(user.uid);
         const channelData = {
             id: channelId,
@@ -83,12 +95,12 @@ class SidePanel extends Component {
         this.props.setCurrentChannel(channelData);
         this.props.setPrivateChannel(true);
         this.setActiveChannel(user.uid);
-    };*/
+    };
 
     isUserOnline = user => user.status === "online";
 
     render() {
-        const {users} = this.state;
+        const { users, activeChannel } = this.state;
         return (
             <div>
                 <div className="text-white">
@@ -97,10 +109,12 @@ class SidePanel extends Component {
                         {users.map( (user) => {
                             return (
                                 <li key={user.uid}
-                                    style={{ opacity: 0.7, fontStyle: "italic" }}>
-                                    {/*active={user.uid === activeChannel}*/}
-                                    {/*onClick={() => this.changeChannel(user)}*/}
-                                    @ {user.name}
+                                    style={{ opacity: 0.7, fontStyle: "italic" }}
+                                    active={user.uid === activeChannel}
+                                    onClick={() => this.changeChannel(user)}
+                                >
+                                    <span className="statu" style={{backgroundColor: `${this.isUserOnline(user) ? "green" : "red"}`}}></span>
+                                    <span className="name">@ {user.name}</span>
                                 </li>
                             )
                         })}
@@ -117,4 +131,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(SidePanel)
+export default connect(mapStateToProps,  { setCurrentChannel, setPrivateChannel })(SidePanel)
