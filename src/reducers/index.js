@@ -206,6 +206,7 @@ const monthData = (state = circularMonth) => {
 
 const tableData = [
     {
+        id: 1,
         Campaing: 'Lorem ipsum dolor sit amet tetur ',
         Time: '6 days',
         Views: 358000,
@@ -215,7 +216,9 @@ const tableData = [
         CPV: '$2.51',
         CPM: '$28.35',
         Status: 'Active',
-    },{
+    },
+    {
+        id: 2,
         Campaing: 'Sed do eiusmod tempor',
         Time: '7 days',
         Views: 1200,
@@ -225,7 +228,9 @@ const tableData = [
         CPV: '$6.13',
         CPM: '$45.22',
         Status: 'Disable',
-    },{
+    },
+    {
+        id: 3,
         Campaing: 'Consectetur adipisicing elit sed do ',
         Time: '3 days',
         Views: 69000,

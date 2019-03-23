@@ -94,3 +94,24 @@
     }
   }
 }
+
+.disabled, .is-active{
+  margin-bottom: 3px;
+  margin-right: 0.4em;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}
+
+.disabled{
+  background-color: #f44336;
+}
+
+.is-active{
+  background-color: #4caf50;
+}
+
+.table-row{
+  padding: 20px 0;
+  border-top: 1px solid rgba(156, 161, 178, 0.3);
+}

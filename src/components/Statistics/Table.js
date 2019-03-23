@@ -53,57 +53,35 @@ class Table extends Component {
                             )
                         })}
                     </li>
-                    {tableData.map((value, index) => <li key={index}
-                                                                       className="d-flex justify-content-between align-items-center  flex-wrap text-white trending-table-row">
+                    {tableData.map((item) => <li key={item.id} className="d-flex justify-content-between align-items-center flex-wrap text-white table-row">
                         <div className="d-flex col-lg-3">
-                            <div className="trending-table-side-description">Campaing</div>
-                            <div>{value.Campaing}</div>
+                            <div>{item.Campaing}</div>
                         </div>
                         <div className="d-flex col-lg-1 ">
-                            <div className="trending-table-side-description">Time</div>
-                            <div>{value.Time}</div>
+                            <div>{item.Time}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">Views</div>
-                            <div>
-                                {
-                                    Number(value.Views).toFixed(0).replace(/./g, function (c, i, a) {
-                                        return i > 0 && c !== " " && (a.length - i) % 3 === 0 ? " " + c : c;
-                                    })
-                                }
-                            </div>
+                            <div>{item.Views}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">Visitors</div>
-                            <div>
-                                {
-                                    Number(value.Visitors).toFixed(0).replace(/./g, function (c, i, a) {
-                                        return i > 0 && c !== " " && (a.length - i) % 3 === 0 ? " " + c : c;
-                                    })
-                                }
-                            </div>
+                            <div>{item.Visitors}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">CTR</div>
-                            <div>{value.CTR}</div>
+                            <div>{item.CTR}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">CPC</div>
-                            <div>{value.CPC}</div>
+                            <div>{item.CPC}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">CPV</div>
-                            <div>{value.CPV}</div>
+                            <div>{item.CPV}</div>
                         </div>
                         <div className="col-lg-1 d-flex">
-                            <div className="trending-table-side-description">CPM</div>
-                            <div>{value.CPM}</div>
+                            <div>{item.CPM}</div>
                         </div>
                         <div className="col-lg-2 d-flex">
-                            <div className="trending-table-side-description">Status</div>
                             <div className="d-flex align-items-center">
-                                <div className={value.Status === 'Active' ? 'is-active' : 'is-unActive'}/>
-                                <div>{value.Status}</div>
+                                <div className={item.Status === 'Active' ? 'is-active' : 'disabled'}/>
+                                <div>{item.Status}</div>
                             </div>
                         </div>
                     </li>)}
