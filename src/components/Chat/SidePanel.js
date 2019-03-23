@@ -74,12 +74,38 @@ class SidePanel extends Component {
         this.setState({ users: updatedUsers });
     };
 
+    /*changeChannel = user => {
+        const channelId = this.getChannelId(user.uid);
+        const channelData = {
+            id: channelId,
+            name: user.name
+        };
+        this.props.setCurrentChannel(channelData);
+        this.props.setPrivateChannel(true);
+        this.setActiveChannel(user.uid);
+    };*/
+
     isUserOnline = user => user.status === "online";
 
     render() {
+        const {users} = this.state;
         return (
             <div>
-                <h1>I am side panel</h1>
+                <div className="text-white">
+                    Users { users.length }
+                    <ul className="users-list">
+                        {users.map( (user) => {
+                            return (
+                                <li key={user.uid}
+                                    style={{ opacity: 0.7, fontStyle: "italic" }}>
+                                    {/*active={user.uid === activeChannel}*/}
+                                    {/*onClick={() => this.changeChannel(user)}*/}
+                                    @ {user.name}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
         )
     }
