@@ -57,7 +57,7 @@ class App extends Component {
     };
 
     render() {
-        const { auth } = this.props;
+        const { auth, user } = this.props;
         return (
             <Router history={customHistory}>
                 { auth ? (
@@ -71,12 +71,12 @@ class App extends Component {
                                     <DropdownToggle caret>
                                         {
                                             <div className="image-wrap">
-                                                <img src={this.props.user.photoURL} alt="user"/>
+                                                <img src={user.photoURL} alt="user"/>
                                             </div>
                                         }
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem header>{this.props.user.displayName}</DropdownItem>
+                                        <DropdownItem header>{user.displayName}</DropdownItem>
                                         <DropdownItem onClick={this.logoutUser}>Logout</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>

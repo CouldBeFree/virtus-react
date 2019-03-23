@@ -47,7 +47,6 @@ class Auth extends Component {
                             this.saveUser(createdUser).then(() => {
                                 console.log('User saved')
                             })
-                            // console.log('User saved')
                         })
                         .catch(err => {
                             console.log(err);
