@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import Chatkit from '@pusher/chatkit-client'
+import Chatkit from '@pusher/chatkit-client';
+import MessagesList from './MessagesList';
 
 class ChatScreen extends Component {
     state = {
-        currentUser: {}
+        currentUser: {},
+        currentRoom: {},
+        messages: []
     };
 
     componentDidMount () {
@@ -18,15 +21,63 @@ class ChatScreen extends Component {
         chatManager
             .connect()
             .then(currentUser => {
-                this.setState({ currentUser })
+                this.setState({ currentUser });
+                return currentUser.subscribeToRoom({
+                    roomId: "19996735",
+                    messageLimit: 100,
+                    hooks: {
+                        onMessage: message => {
+                            this.setState({
+                                messages: [...this.state.messages, message],
+                            })
+                        },
+                    },
+                })
+            })
+            .then(currentRoom => {
+                this.setState({ currentRoom })
             })
             .catch(error => console.error('error', error))
     }
 
     render() {
+        const styles = {
+            container: {
+                height: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+            },
+            chatContainer: {
+                display: 'flex',
+                flex: 1,
+            },
+            whosOnlineListContainer: {
+                width: '300px',
+                flex: 'none',
+                padding: 20,
+                backgroundColor: '#2c303b',
+                color: 'white',
+            },
+            chatListContainer: {
+                padding: 20,
+                width: '85%',
+                display: 'flex',
+                flexDirection: 'column',
+            },
+        };
         return (
-            <div>
-                <h1>Chat</h1>
+            <div style={styles.container}>
+                <div style={styles.chatContainer}>
+                    <aside style={styles.whosOnlineListContainer}>
+                        <h2>Who's online PLACEHOLDER</h2>
+                    </aside>
+                    <section style={styles.chatListContainer}>
+                        <MessageList
+                            messages={this.state.messages}
+                            style={styles.chatList}
+                        />
+                    </section>
+                </div>
             </div>
         )
     }
