@@ -9,6 +9,7 @@ import { Row, Col } from 'reactstrap';
 class Chat extends Component {
     state = {
         currentUsername: '',
+        currentScreen: 'WhatIsYourUsernameScreen'
     };
 
     onUsernameSubmitted = (username) => {
@@ -21,28 +22,21 @@ class Chat extends Component {
         })
             .then(response => {
                 this.setState({
-                    currentUsername: username
+                    currentUsername: username,
+                    currentScreen: 'ChatScreen'
                 })
             })
             .catch(error => console.error('error', error))
     };
 
     render() {
-        return (
-            <div className="chat">
-                <Row>
-                    <Col xs="4">
-                        <UserForm onSubmit={this.onUsernameSubmitted} />
-                    </Col>
-                    <Col xs="8">
-                        <ChatScreen />
-                    </Col>
-                    {/*<Col xs="2">
-
-                    </Col>*/}
-                </Row>
-            </div>
-        )
+        const {currentScreen, currentUsername} = this.state;
+        if (currentScreen === 'WhatIsYourUsernameScreen') {
+            return <UserForm onSubmit={this.onUsernameSubmitted} />
+        }
+        if (this.state.currentScreen === 'ChatScreen') {
+            return <ChatScreen currentUsername={currentUsername} />
+        }
     }
 }
 
