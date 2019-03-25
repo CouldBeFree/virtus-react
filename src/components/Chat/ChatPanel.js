@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import firebase from '../../firebase'
+import MessageForm from './MessageForm';
+import firebase from '../../firebase';
 
 class ChatPanel extends Component {
     state = {
@@ -10,7 +11,7 @@ class ChatPanel extends Component {
     render() {
         return (
             <div>
-                <h1>I am chat panel</h1>
+                <MessageForm />
             </div>
         )
     }

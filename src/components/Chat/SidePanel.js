@@ -110,10 +110,10 @@ class SidePanel extends Component {
                             return (
                                 <li key={user.uid}
                                     style={{ opacity: 0.7, fontStyle: "italic" }}
-                                    active={user.uid === activeChannel}
+                                  /*  active={user.uid === activeChannel}*/
                                     onClick={() => this.changeChannel(user)}
                                 >
-                                    <span className="statu" style={{backgroundColor: `${this.isUserOnline(user) ? "green" : "red"}`}}></span>
+                                    <span className="status" style={{backgroundColor: `${this.isUserOnline(user) ? "green" : "red"}`}}></span>
                                     <span className="name">@ {user.name}</span>
                                 </li>
                             )
