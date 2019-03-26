@@ -2,37 +2,16 @@ import React, { Component } from 'react'
 
 class MessagesList extends Component {
     render() {
-        const styles = {
-            container: {
-                overflowY: 'scroll',
-                flex: 1,
-            },
-            ul: {
-                listStyle: 'none',
-            },
-            li: {
-                marginTop: 13,
-                marginBottom: 13,
-            },
-            senderUsername: {
-                fontWeight: 'bold',
-            },
-            message: { fontSize: 15 },
-        };
+        const {messages} = this.props;
         return (
-            <div
-                style={{
-                    ...this.props.style,
-                    ...styles.container,
-                }}
-            >
-                <ul style={styles.ul}>
-                    {this.props.messages.map((message, index) => (
-                        <li key={index} style={styles.li}>
+            <div className="list-container">
+                <ul className="list">
+                    {messages.map((message, index) => (
+                        <li key={index} className="list-item">
                             <div>
-                                <span style={styles.senderUsername}>{message.senderId}</span>{' '}
+                                <span className="user">{message.senderId}</span>{' '}
                             </div>
-                            <p style={styles.message}>{message.text}</p>
+                            <p className="message">{message.text}</p>
                         </li>
                     ))}
                 </ul>

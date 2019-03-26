@@ -8,9 +8,90 @@
   }
 }
 
-.statu{
-  display: inline-block;
-  width: 10px;
-  height: 10px;
+.chat-intro{
+  height: calc(100vh - 180px);
+}
+
+.intro-form{
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 20px 0;
+  border-radius: 10px;
+
+  .form-control{
+    width: 45%;
+  }
+}
+
+.list-container{
+  overflowY: scroll;
+  flex: 1;
+
+  .list{
+    list-style-type: none;
+    color: #ffffff;
+
+    &-item{
+      margin: 13px 0;
+    }
+  }
+
+  .message{
+    font-size: 15px;
+  }
+
+  .user{
+    font-weight: bold;
+  }
+}
+
+.screen-container{
+  height: 100vh;
+  
+  .chat-container{
+    flex: 1;
+  }
+  
+  .user-online{
+    width: 300px;
+    flex: none;
+    padding: 20px;
+    background-color:  #2c303b;
+    color: white;
+  }
+
+  .chat-list{
+    padding: 20px;
+    width: 85%;
+  }
+}
+
+.message-input{
+  color: #ffffff;
+  background: none;
+  outline: none;
+  border: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+.message-container{
+  padding: 20px;
+  border-top: 1px #4C758F solid;
+  margin-bottom: 20px;
+}
+
+.online-item{
+  margin: 5px 0;
+  padding: 2px 0;
+}
+
+.status-item{
+  width: 11px;
+  height: 11px;
+  margin-right: 10px;
   border-radius: 50%;
 }

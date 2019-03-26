@@ -63,6 +63,13 @@
   }
 }
 
+input{
+  &:focus{
+    box-shadow: unset!important;
+    outline: 0!important;
+  }
+}
+
 @import "Sidebar/sidebar";
 @import "./Auth/Auth";
 @import "./Home/Home";

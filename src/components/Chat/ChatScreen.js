@@ -14,9 +14,9 @@ class ChatScreen extends Component {
     };
 
     sendTypingEvent = () => {
-        const { currentUser } = this.state;
+        const { currentUser, currentRoom } = this.state;
         currentUser
-            .isTypingIn({ roomId: this.state.currentRoom.id })
+            .isTypingIn({ roomId: currentRoom.id })
             .catch(error => console.error('error', error))
     };
 
@@ -73,43 +73,18 @@ class ChatScreen extends Component {
     }
 
     render() {
-        const styles = {
-            container: {
-                height: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-            },
-            chatContainer: {
-                display: 'flex',
-                flex: 1,
-            },
-            whosOnlineListContainer: {
-                width: '300px',
-                flex: 'none',
-                padding: 20,
-                backgroundColor: '#2c303b',
-                color: 'white',
-            },
-            chatListContainer: {
-                padding: 20,
-                width: '85%',
-                display: 'flex',
-                flexDirection: 'column',
-            },
-        };
         return (
-            <div style={styles.container}>
-                <div style={styles.chatContainer}>
-                    <aside style={styles.whosOnlineListContainer}>
+            <div className="screen-container d-flex flex-column">
+                <div className="chat-container d-flex">
+                    <aside className="user-online">
                         <WhoIsOnlineList
                             currentUser={this.state.currentUser}
                             users={this.state.currentRoom.users}
                         />
                     </aside>
-                    <section style={styles.chatListContainer}>
+                    <section className="chat-list d-flex flex-column">
                         <MessagesList
                             messages={this.state.messages}
-                            style={styles.chatList}
                         />
                         <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
                         <SendMessageForm

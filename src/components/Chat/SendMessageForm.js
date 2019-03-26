@@ -19,34 +19,17 @@ class SendMessageForm extends Component {
     };
 
     render() {
-        const styles = {
-            container: {
-                padding: 20,
-                borderTop: '1px #4C758F solid',
-                marginBottom: 20,
-            },
-            form: {
-                display: 'flex',
-            },
-            input: {
-                color: 'inherit',
-                background: 'none',
-                outline: 'none',
-                border: 'none',
-                flex: 1,
-                fontSize: 16,
-            },
-        };
+        const {text} = this.state;
         return (
-            <div style={styles.container}>
+            <div className="message-container">
                 <div>
-                    <form onSubmit={this.onSubmit} style={styles.form}>
+                    <form onSubmit={this.onSubmit} className="d-flex">
                         <input
                             type="text"
                             placeholder="Type a message here then hit ENTER"
                             onChange={this.onChange}
-                            value={this.state.text}
-                            style={styles.input}
+                            value={text}
+                            className="message-input"
                         />
                     </form>
                 </div>
